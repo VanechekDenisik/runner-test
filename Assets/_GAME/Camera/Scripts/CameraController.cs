@@ -18,8 +18,14 @@ namespace Camera
             parameterGameObjectToFollow.Subscribe(StartFollowingObject);
         }
 
+        private void OnDestroy()
+        {
+            parameterGameObjectToFollow.Unsubscribe(StartFollowingObject);
+        }
+
         private void StartFollowingObject(GameObject obj)
         {
+            if (obj == null) return;
             _transformToFollow = obj.transform;
             _positionOffsetFromObjectToFollow = transform.position - _transformToFollow.position;
         }
@@ -31,6 +37,8 @@ namespace Camera
 
         private void MoveCameraWithObjectToFollow()
         {
+            if (_transformToFollow == null) return;
+            
             transform.position = (_transformToFollow.position + _positionOffsetFromObjectToFollow)
                 .WithY(transform.position.y);
         }

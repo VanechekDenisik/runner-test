@@ -24,5 +24,10 @@ namespace Core.Events
             OnSet += onSet;
             onSet?.Invoke(_value);
         }
+        
+        public void Unsubscribe(Action<T> onSet)
+        {
+            OnSet -= onSet;
+        }
     }
 }

@@ -17,6 +17,11 @@ namespace Collectables
             }
         }
 
+        private void OnDestroy()
+        {
+            transform.DOKill();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag($"Character")) return;

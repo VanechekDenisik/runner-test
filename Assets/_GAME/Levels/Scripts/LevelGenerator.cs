@@ -11,7 +11,7 @@ namespace Levels
         private void Awake()
         {
             LevelPart previousPart = startingLevelPart;
-            for (var partId = 0; partId < 20; partId++)
+            for (var partId = 0; partId < 40; partId++)
             {
                 var levelPart = Instantiate(Config.RandomPart(), transform);
                 levelPart.transform.position = previousPart?.EndPoint.position ?? Vector3.zero;

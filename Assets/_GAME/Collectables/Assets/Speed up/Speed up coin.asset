@@ -19,7 +19,7 @@ MonoBehaviour:
   - applier: {fileID: 11400000, guid: 4d6d12e3f873e4aabaef5a1ef703e062, type: 2}
     parameters:
     - type: 1
-      value: 50
+      value: 20
     - type: 2
       value: 10
   <RotationSpeed>k__BackingField: 1

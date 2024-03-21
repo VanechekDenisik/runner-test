@@ -4,6 +4,7 @@ using Core.Events.Parameters;
 using Core.Helpers;
 using Core.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Characters
 {
@@ -26,10 +27,15 @@ namespace Characters
             tapCatcherParameter.Subscribe(SubscribeToTapOnScreen);
         }
 
+        private void FixedUpdate()
+        {
+            ApplyGravity();
+            Move();
+        }
+
         private void Update()
         {
-            Move();
-            ApplyGravity();
+            TryDie();
             
             if (Input.GetKeyDown(KeyCode.Space)) Jump();
         }
@@ -45,8 +51,8 @@ namespace Characters
         }
 
         private float MovementSpeed => (IsFlying ? Config.FlySpeed : Config.RunSpeed) * (100f + MovementSpeedPercentageBonus) / 100f;
-        private Vector3 ForwardMovingVector => Time.deltaTime * MovementSpeed * Vector3.forward;
-        private float FlyHeight => Mathf.Lerp(_rigidBody.position.y, Config.FlyHeight, Time.deltaTime * Config.FlyUpSpeed);
+        private Vector3 ForwardMovingVector => Time.fixedDeltaTime * MovementSpeed * Vector3.forward;
+        private float FlyHeight => Mathf.Lerp(transform.position.y, Config.FlyHeight, Time.deltaTime * Config.FlyUpSpeed);
 
         private Vector3 NextMovePosition => !IsFlying
             ? _rigidBody.position + ForwardMovingVector
@@ -81,6 +87,12 @@ namespace Characters
         {
             if (!CollidedWithFloor(other)) return;
             _isOnFloor = false;
+        }
+
+        private void TryDie()
+        {
+            if (transform.position.y > -5) return;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
