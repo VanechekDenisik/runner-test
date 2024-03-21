@@ -16,11 +16,21 @@ namespace Characters
         [InjectFromEntity] private Rigidbody _rigidBody;
         
         public float MovementSpeedPercentageBonus { get; set; }
-        public float FlyBonus { get; set; }
+
+        public float FlyBonus { get; private set; }
 
         public bool IsFlying => FlyBonus > 0;
 
-        private bool _isOnFloor;
+        public bool IsOnFloor { get; private set; }
+
+        public event Action OnIsOnFloorChanged;
+        public event Action OnIsFlyingChanged;
+
+        public void AddFlyBonus(float delta)
+        {
+            FlyBonus += delta;
+            OnIsFlyingChanged?.Invoke();
+        }
         
         private void Awake()
         {
@@ -60,7 +70,7 @@ namespace Characters
 
         private void Jump()
         {
-            if (!_isOnFloor) return;
+            if (!IsOnFloor) return;
             
             _rigidBody.AddForce(Config.JumpImpulse * Vector3.up, ForceMode.VelocityChange);
         }
@@ -80,13 +90,15 @@ namespace Characters
         private void OnCollisionEnter(Collision other)
         {
             if (!CollidedWithFloor(other)) return;
-            _isOnFloor = true;
+            IsOnFloor = true;
+            OnIsOnFloorChanged?.Invoke();
         }
 
         private void OnCollisionExit(Collision other)
         {
             if (!CollidedWithFloor(other)) return;
-            _isOnFloor = false;
+            IsOnFloor = false;
+            OnIsOnFloorChanged?.Invoke();
         }
 
         private void TryDie()

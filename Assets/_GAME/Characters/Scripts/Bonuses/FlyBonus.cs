@@ -9,7 +9,7 @@ namespace Characters.Bonuses
     {
         protected override void Apply(CharacterController target, Bonus bonus)
         {
-            target.FlyBonus += bonus.Amount;
+            target.AddFlyBonus(bonus.Amount);
         }
     }
 }
