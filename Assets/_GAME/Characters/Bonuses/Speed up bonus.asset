@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c555083485a482997de58d38003da05, type: 3}
   m_Name: Speed up bonus
   m_EditorClassIdentifier: 
-  <DescriptionText>k__BackingField: +{amount}% movement speed
+  <DescriptionText>k__BackingField: +{amount}% movement speed  for {duration} seconds
   <Sprite>k__BackingField: {fileID: 0}
   <Type>k__BackingField: {fileID: 11400000, guid: c5f65ee76ac504b89866e9c108b9c172,
     type: 2}

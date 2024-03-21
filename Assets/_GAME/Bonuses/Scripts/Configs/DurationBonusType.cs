@@ -9,7 +9,7 @@ namespace Bonuses.Configs
         {
             return new Bonus(b1)
                 .SetAmount(Mathf.Max(b1.Amount, b2.Amount))
-                .SetDuration(Mathf.Min(b1.Duration + b2.Duration, Mathf.Max(b1.Duration, b2.Duration)));
+                .SetDuration(b1.Duration + b2.Duration);
         }
 
         public override Bonus Multiply(Bonus b, float c)

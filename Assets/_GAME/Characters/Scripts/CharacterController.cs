@@ -1,6 +1,7 @@
 using System;
 using Core.Common.Entities;
 using Core.Events.Parameters;
+using Core.Helpers;
 using Core.UI;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ namespace Characters
         [InjectFromEntity] private Rigidbody _rigidBody;
         
         public float MovementSpeedPercentageBonus { get; set; }
+        public float FlyBonus { get; set; }
+
+        public bool IsFlying => FlyBonus > 0;
 
         private bool _isOnFloor;
         
@@ -24,7 +28,7 @@ namespace Characters
 
         private void Update()
         {
-            MoveForward();
+            Move();
             ApplyGravity();
         }
         
@@ -33,13 +37,18 @@ namespace Characters
             obj.GetComponent<SpriteTapCatcher>().OnDown += Jump;
         }
 
-        private void MoveForward()
+        private void Move()
         {
-            _rigidBody.MovePosition(_rigidBody.position + DeltaMovementVector);
+            _rigidBody.MovePosition(NextMovePosition);
         }
 
-        private float MovementSpeed => Config.MovementSpeed * (100f + MovementSpeedPercentageBonus) / 100f;
-        private Vector3 DeltaMovementVector => Time.deltaTime * MovementSpeed * Vector3.forward;
+        private float MovementSpeed => (IsFlying ? Config.FlySpeed : Config.RunSpeed) * (100f + MovementSpeedPercentageBonus) / 100f;
+        private Vector3 ForwardMovingVector => Time.deltaTime * MovementSpeed * Vector3.forward;
+        private float FlyHeight => Mathf.Lerp(_rigidBody.position.y, Config.FlyHeight, Time.deltaTime * Config.FlyUpSpeed);
+
+        private Vector3 NextMovePosition => !IsFlying
+            ? _rigidBody.position + ForwardMovingVector
+            : (_rigidBody.position + ForwardMovingVector).WithY(FlyHeight);
 
         private void Jump()
         {
@@ -50,6 +59,8 @@ namespace Characters
 
         private void ApplyGravity()
         {
+            if (IsFlying) return;
+            
             _rigidBody.AddForce(Config.Gravity * Time.deltaTime * Vector3.down, ForceMode.Acceleration);
         }
         

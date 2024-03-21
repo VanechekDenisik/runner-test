@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c555083485a482997de58d38003da05, type: 3}
-  m_Name: Slow down bonus
+  m_Script: {fileID: 11500000, guid: 88cfabbe14da4a3ca746bf0724d5ba2d, type: 3}
+  m_Name: Fly bonus
   m_EditorClassIdentifier: 
-  <DescriptionText>k__BackingField: -{amount}% movement speed for {duration} seconds
+  <DescriptionText>k__BackingField: character starts to fly for {duration} seconds
   <Sprite>k__BackingField: {fileID: 0}
   <Type>k__BackingField: {fileID: 11400000, guid: c5f65ee76ac504b89866e9c108b9c172,
     type: 2}
