@@ -30,6 +30,8 @@ namespace Characters
         {
             Move();
             ApplyGravity();
+            
+            if (Input.GetKeyDown(KeyCode.Space)) Jump();
         }
         
         private void SubscribeToTapOnScreen(GameObject obj)
