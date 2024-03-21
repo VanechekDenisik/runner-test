@@ -8,17 +8,20 @@ using UnityEngine.SceneManagement;
 
 namespace Characters
 {
-    /// <summary>
-    /// Class contains the logic of character movement and dying. You can see here that methods are very tiny.
-    /// This was made because fast memory of human is rather small and easy code == code that fits in human brain.
-    /// I used "Extract Method" + "Replace Temp with Query" + "Inline Temp) refactoring patterns here.
-    /// As you can see the refactoring helps to write easy to understand code even without a bunch of comments.
-    /// </summary>
+    // Class contains the logic of character movement and dying. You can see here that methods are very tiny.
+    // This was made because fast memory of human is rather small and easy code == code that fits in human brain.
+    // I used "Extract Method" + "Replace Temp with Query" + "Inline Temp) refactoring patterns here.
+    // As you can see the refactoring helps to write easy to understand code even without a bunch of comments.
+    
+    //Class EntityComponentWithConfig helps to reduce duplication in code.
     [RequireComponent(typeof(Rigidbody))]
     public class CharacterController : EntityComponentWithConfig<CharacterConfig>
     {
+        //ParameterGameObject is used here for prefab modularity without utilizing a service locator or using statics.
         [SerializeField] private ParameterGameObject tapCatcherParameter;
 
+        //Self-written "Dependency Injection" pattern using reflection and attribute [InjectFromEntity].
+        //It helps to reduce low level duplication in code.
         [InjectFromEntity] private Rigidbody _rigidBody;
 
         public float MovementSpeedPercentageBonus { get; set; }

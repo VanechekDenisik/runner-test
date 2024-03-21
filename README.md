@@ -2,7 +2,7 @@
 
 ## General
 This is a project for a test assignment for the position of "Gameplay Engineer (Unity3D)".
-Approximately 8 hours were spent on the assignment including refactoring and documentation.
+Approximately 11 hours were spent on the assignment including refactoring and documentation.
 
 ## Task
 Your task will be to create a simple platformer endless runner with an emphasis on code extensibility. Whether it's 2D or 3D doesn't matter. You can use any available assets. The main character of this runner is a character who automatically runs along the platform. The runner should be enjoyable to play.
@@ -21,14 +21,14 @@ The project code should be published in your GitHub repository. In the Build fol
 [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041)\
 [DOTween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)\
 [Addressables](https://docs.unity3d.com/Manual/com.unity.addressables.html)\
-[HYPER Casual Stickmans](https://assetstore.unity.com/packages/3d/characters/humanoids/humans/hypercasual-stickman-pack-2-169861)
-[ProBuilder](https://docs.unity3d.com/Packages/com.unity.probuilder@6.0/manual/index.html)
+[HYPER Casual Stickmans](https://assetstore.unity.com/packages/3d/characters/humanoids/humans/hypercasual-stickman-pack-2-169861)\
+[ProBuilder](https://docs.unity3d.com/Packages/com.unity.probuilder@6.0/manual/index.html)\
 [Simple Gems](https://assetstore.unity.com/packages/3d/props/simple-gems-ultimate-animated-customizable-pack-73764)
 
 ## How is extensibility achieved
 Probably the most interesting system in the project is 
 [Bonuses system](Assets/_GAME/Bonuses/README.md). The system helps to create new entities with new 
-effects (bonuses, debuffs) without changing logic of other systems. This is my own system that I created 
+effects (bonuses, debuffs) without changing logic of other systems. This system I created 
 previously for action RPG game. Here I simplified it and used with 
 [Collectables system](Assets/_GAME/Collectables/README.md) to achieve modular system that can be easily
 extended - even if it is unknown how the project will evolve in future.
@@ -38,9 +38,9 @@ You can see simple examples of new bonuses implementation in scripts
 [MovementSpeedBonus](Assets/_GAME/Characters/Scripts/Bonuses/MovementSpeedBonus.cs).
 
 In the system I am using all SOLID principles: 
-1) SRP for simple code
-2) OCP for extendable and modular bonuses. Instead of changing existing scripts you can inherit 
-from specific classes or use existing classes and configs.
+1) SRP for easy to understand code => easy to rewrite if necessary.
+2) OCP for extendable and modular bonuses and collectables. Instead of changing existing scripts you can inherit 
+from specific classes or use existing classes and configs and just setup existing parameters to create new collectables.
 3) LSP for correct inheritance. You can see that in the system there are some inheritance and 
 polymorphism used to remove duplication and to extend existing logic.
 4) ISP: there are not much interfaces in the project because of rather easy logic of the game.
@@ -48,7 +48,7 @@ polymorphism used to remove duplication and to extend existing logic.
 functionality). Instead of this, systems like Collectables, Characters depend on it. This is the example
 of dependency inversion in practice. I used such architecture because implementation of 
 specific bonuses logic of in-game mechanics is not the responsibility of Bonuses system. Also I want to change 
-the code of the system as rarely as possible.
+the code of the Bonuses system as rarely as possible.
 
 ## Easy to read namings in unity
 I think it is quite important to select easy to understand namings in code. But it is 
@@ -58,5 +58,13 @@ Also one should write "Tap catcher parameter" instead of "TapCatcherParameter" b
 much more easier to read and understand.
 
 ## Refactoring patterns
+Despite the project being simple I tried to use refactoring patterns as much as I can. I think it is 
+the most important part of writing clean and extendable code base. I managed to use only about ~10% of 
+refactoring skills that I have. Contact me if you would like to discuss this topic - it will be super
+fun!
 
-[Core](Assets/_GAME/Core/README.md)\
+## Core systems used in the project
+The project contains some "Core" systems like Entities, Initializers, Events assets. I think they 
+are quite convenient and interesting. They were created not in a single day and helps a lot to remove 
+low level duplication in code. I took them from my previous projects. I think you can skip studying 
+these systems if you have not much time.

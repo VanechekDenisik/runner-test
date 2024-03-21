@@ -54,7 +54,7 @@ namespace Bonuses
         }
         
         //This method is not quite long but look how it is difficult to understand in comparison with upper one.
-        //That's why it should be refactored using "Extract method" refactoring pattern.
+        //That's why even such rather short methods should be refactored f.e. using "Extract method" refactoring pattern.
         public Bonus SetValue(BonusParameterType type, float value)
         {
             var newParameters = new List<BonusParameter>(parameters);
@@ -71,7 +71,7 @@ namespace Bonuses
             return SetValue(type, GetValue(type) + value);
         }
 
-        //These methods were introduced to remove duplication in code because they were invoked too often.
+        //These methods were introduced to remove duplication in code because they were invoked quite often.
         public float Amount => GetValue(BonusParameterType.Amount);
         public float Duration => GetValue(BonusParameterType.Duration);
         public int Level => (int)GetValue(BonusParameterType.Level);

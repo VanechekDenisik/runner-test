@@ -8,6 +8,7 @@ namespace Camera
 {
     public class CameraController : EntityComponent
     {
+        //ParameterGameObject is used here for prefab modularity without utilizing a service locator or using statics.
         [SerializeField] private ParameterGameObject parameterGameObjectToFollow;
 
         private Transform _transformToFollow;

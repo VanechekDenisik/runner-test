@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Collectables
 {
-    public class Collectable : EntityComponentWithConfig<CollectableConfig>
+    public class CollectableController : EntityComponentWithConfig<CollectableConfig>
     {
         private void Awake()
         {
