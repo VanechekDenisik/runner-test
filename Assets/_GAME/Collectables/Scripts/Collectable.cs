@@ -9,12 +9,16 @@ namespace Collectables
     {
         private void Awake()
         {
-            if (Config.RotationSpeed > 0)
-            {
-                transform.DOLocalRotate(new Vector3(0, 360, 0), 1 / Config.RotationSpeed, RotateMode.LocalAxisAdd)
-                    .SetLoops(-1)
-                    .SetEase(Ease.Linear);
-            }
+            RotateCollectableOverTime();
+        }
+
+        private void RotateCollectableOverTime()
+        {
+            if (Config.RotationSpeed <= 0) return;
+            
+            transform.DOLocalRotate(new Vector3(0, 360, 0), 1 / Config.RotationSpeed, RotateMode.LocalAxisAdd)
+                .SetLoops(-1)
+                .SetEase(Ease.Linear);
         }
 
         private void OnDestroy()
@@ -27,7 +31,6 @@ namespace Collectables
             if (!other.CompareTag($"Character")) return;
             
             AddBonusesToTarget(other);
-            
             gameObject.SetActive(false);
         }
 

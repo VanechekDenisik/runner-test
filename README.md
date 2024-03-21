@@ -2,7 +2,7 @@
 
 ## General
 This is a project for a test assignment for the position of "Gameplay Engineer (Unity3D)".
-Approximately 8 hours were spent on the assignment.
+Approximately 8 hours were spent on the assignment including refactoring and documentation.
 
 ## Task
 Your task will be to create a simple platformer endless runner with an emphasis on code extensibility. Whether it's 2D or 3D doesn't matter. You can use any available assets. The main character of this runner is a character who automatically runs along the platform. The runner should be enjoyable to play.
