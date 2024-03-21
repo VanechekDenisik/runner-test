@@ -36,7 +36,7 @@ namespace Bonuses
         
         public event Action OnBonusesChanged;
 
-        //TODO maybe refactor because method is too large?
+        //This method should be refactored. It is quite big.
         public void AddBonuses(params Bonus[] deltaBonuses)
         {
             if (deltaBonuses.IsEmpty()) return;
@@ -59,6 +59,7 @@ namespace Bonuses
             OnBonusesChanged?.Invoke();
         }
 
+        //And lower ones are in contrary are quite good!
         public float GetAmount<T>() where T : BonusApplier
         {
             return GetBonuses().Sum(b => b.Amount);

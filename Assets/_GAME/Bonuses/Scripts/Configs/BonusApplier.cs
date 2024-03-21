@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Bonuses.Configs
 {
+    //These class helps to create bonuses that applies to different classes. If you need to apply bonus for movement
+    //or for money income or for damage for unit's auto attacks then you should inherit from the class. Also
+    //check BonusApplierFor class - it is quite convenient.
     public abstract class BonusApplier : ScriptableObject
     {
         [field:SerializeField, TextArea(3, 20)] public string DescriptionText { get; private set; }

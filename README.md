@@ -50,6 +50,13 @@ of dependency inversion in practice. I used such architecture because implementa
 specific bonuses logic of in-game mechanics is not the responsibility of Bonuses system. Also I want to change 
 the code of the system as rarely as possible.
 
+## Easy to read namings in unity
+I think it is quite important to select easy to understand namings in code. But it is 
+well known. What is also very important in my opinion that namings IN UNITY should be also easy to 
+understand and well written. I always pay attention to this and this project is not a exception.
+Also one should write "Tap catcher parameter" instead of "TapCatcherParameter" because it is really 
+much more easier to read and understand.
 
+## Refactoring patterns
 
 [Core](Assets/_GAME/Core/README.md)\

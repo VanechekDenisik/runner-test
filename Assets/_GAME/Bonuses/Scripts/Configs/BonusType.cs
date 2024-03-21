@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace Bonuses.Configs
 {
+    //These class helps to create bonuses with different mechanics. If you require bonus that lasts for some levels or
+    //bonus that have stacks then you should inherit from that class.
     public abstract class BonusType : ScriptableObject
     {
         public abstract Bonus Plus(Bonus b1, Bonus b2);

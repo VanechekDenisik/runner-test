@@ -8,12 +8,16 @@ using UnityEngine;
 namespace Bonuses
 {
     /// <summary>
-    /// The struct of 
+    /// The struct for bonuses. A bunch of iterations with refactoring was required to achieve such convenient and
+    /// easy to understand logic. Such logic can be created only during attentive and diligent every day work on the code.
     /// </summary>
     [Serializable]
     public struct Bonus
     {
+        //I am using polymorphism or "Strategy" pattern here.
         [HideLabel] public BonusApplier applier;
+        
+        //This is the example of "Component" pattern or flexible data structure usage.
         public BonusParameter[] parameters;
         
         public Bonus(Bonus bonus)
@@ -49,6 +53,8 @@ namespace Bonuses
             return SetValue(parameter.type, parameter.value);
         }
         
+        //This method is not quite long but look how it is difficult to understand in comparison with upper one.
+        //That's why it should be refactored using "Extract method" refactoring pattern.
         public Bonus SetValue(BonusParameterType type, float value)
         {
             var newParameters = new List<BonusParameter>(parameters);
@@ -65,14 +71,17 @@ namespace Bonuses
             return SetValue(type, GetValue(type) + value);
         }
 
+        //These methods were introduced to remove duplication in code because they were invoked too often.
         public float Amount => GetValue(BonusParameterType.Amount);
         public float Duration => GetValue(BonusParameterType.Duration);
         public int Level => (int)GetValue(BonusParameterType.Level);
         
+        //These methods were introduced for the same reason as above.
         public Bonus SetAmount(float value) => SetValue(BonusParameterType.Amount, value);
         public Bonus SetDuration(float value) => SetValue(BonusParameterType.Duration, value);
         public Bonus SetLevel(int value) => SetValue(BonusParameterType.Level, value);
         
+        //And these.
         public bool HasAmount => HasNonZeroValue(BonusParameterType.Amount);
         public bool HasDuration => GetValue(BonusParameterType.Duration) > 0;
         public bool HasLevel => HasNonZeroValue(BonusParameterType.Duration);
@@ -81,6 +90,7 @@ namespace Bonuses
         {
             get
             {
+                //This is the example of polymorphism.
                 var result = applier?.Description();
                 foreach (var parameter in parameters)
                     result = parameter.UpdateDescription(result);

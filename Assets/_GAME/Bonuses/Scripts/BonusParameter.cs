@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 
 namespace Bonuses
 {
+    //An example of flexible data structure.
     [Serializable]
     public struct BonusParameter
     {
