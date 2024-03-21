@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace Bonuses
 {
+    /// <summary>
+    /// The struct of 
+    /// </summary>
     [Serializable]
     public struct Bonus
     {

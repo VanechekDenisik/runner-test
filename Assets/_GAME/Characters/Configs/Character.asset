@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components: []
   <Groups>k__BackingField: []
-  <RunSpeed>k__BackingField: 6
   <Gravity>k__BackingField: 2000
   <JumpImpulse>k__BackingField: 15
-  <FlySpeed>k__BackingField: 10
-  <FlyHeight>k__BackingField: 4
   <FlyUpSpeed>k__BackingField: 10
+  <FlyHeight>k__BackingField: 4
+  flySpeed: 10
+  runSpeed: 6

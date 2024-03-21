@@ -26,10 +26,18 @@ namespace Collectables
         {
             if (!other.CompareTag($"Character")) return;
             
-            foreach (var bonus in Config.Bonuses)
-                bonus.AddToTarget(other.gameObject);
+            AddBonusesToTarget(other);
             
             gameObject.SetActive(false);
+        }
+
+        //I am using "Extract method" refactoring pattern here instead of creating comments. It reduces the amount
+        //of information that the reader should understand. Other benefit is that this small method can be used in
+        //future without additional refactoring.
+        private void AddBonusesToTarget(Collider other)
+        {
+            foreach (var bonus in Config.Bonuses)
+                bonus.AddToTarget(other.gameObject);
         }
     }
 }
