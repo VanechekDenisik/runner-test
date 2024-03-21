@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c555083485a482997de58d38003da05, type: 3}
+  m_Name: Slow down bonus
+  m_EditorClassIdentifier: 
+  <DescriptionText>k__BackingField: -{amount}% movement speed
+  <Sprite>k__BackingField: {fileID: 0}
+  <Type>k__BackingField: {fileID: 11400000, guid: c5f65ee76ac504b89866e9c108b9c172,
+    type: 2}

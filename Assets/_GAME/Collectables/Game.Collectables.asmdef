@@ -1,0 +1,20 @@
+{
+    "name": "Game.Collectables",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c53712b8f2b9c4dc9a1c713c0c554704",
+        "GUID:bd2bdc9850a304b89b7e4eb80b4adc30",
+        "GUID:43786bad9473d4131a390fead4082721",
+        "GUID:4ed4f4b386ced4ade91885c98c842f2c",
+        "GUID:322888811eb9a44049670f4b6a715b6f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Bonuses",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c53712b8f2b9c4dc9a1c713c0c554704",
+        "GUID:43786bad9473d4131a390fead4082721",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

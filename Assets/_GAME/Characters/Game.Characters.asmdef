@@ -4,7 +4,8 @@
     "references": [
         "Game.Core.Common",
         "Game.Core.Events",
-        "Game.Core.UI"
+        "Game.Core.UI",
+        "Bonuses"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
