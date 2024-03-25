@@ -86,6 +86,7 @@ namespace Characters
 
         private void SubscribeToTapOnScreen(GameObject obj)
         {
+            if (obj == null) return;
             obj.GetComponent<SpriteTapCatcher>().OnDown += Jump;
         }
 
